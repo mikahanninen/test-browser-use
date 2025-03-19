@@ -2,18 +2,21 @@ from robocorp.tasks import task
 import asyncio
 from langchain_openai import ChatOpenAI
 from browser_use import Agent, Browser, BrowserConfig
-from robocorp import browser
+from robocorp import browser as robocorp_browser
 
+# This is optional, it is used to load the environment variables from the .env file
+# Now environment variables are loaded from the env.json file (the Robocorp way)
 # from dotenv import load_dotenv
-
 # load_dotenv()
-browser.configure()
+
+
+# This is used to install browsers for the Playwright
+robocorp_browser.configure()
 
 
 async def main():
     # Basic configuration
     config = BrowserConfig(headless=True, disable_security=True)
-
     browser = Browser(config=config)
     try:
         # video: https://preview.screen.studio/share/70xBqZyN
